@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--ten layout dat theo vi tri cua file php giao dien-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_cofiguration.xsd">
+      <update handle="styles" />
+      <body>
+          <referenceContainer name="content">
+              <!--giao dien se duoc ve tai day-->
+              <uiComponent name="productdesign_general_setting"/> 
+          </referenceContainer>
+      </body>
+</page>
+

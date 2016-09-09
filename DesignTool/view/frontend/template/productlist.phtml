@@ -1,0 +1,18 @@
+<h1>
+    <?php echo __("Your Product List") ?>
+</h1>
+<ul class="designtool-product-list">
+    <?php foreach($block->getProducts() as $product): ?>
+    <li class="designtool-product-list-item">
+        <h3 class="designtool-product-item-title">
+            Product name
+        </h3>
+        <div class="designtool-product-item-content">
+            Product content
+        </div>
+        <div class="designtool-product-item-meta">
+            Created at: xxx
+        </div>
+    </li>
+    <?php endforeach; ?>
+</ul>

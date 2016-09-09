@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!--neu khoi tao PostInterface thi phai khoi tao Post-->
+    <preference for="dalmate\ProductDesign\Api\Data\PostInterface" type="dalmate\ProductDesign\Model\Post"/>
+    <virtualType name="BlogGridFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="PostGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">dalmate\ProductDesign\Model\Resource\Post\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">BlogGridFilterPool</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="dalmate\ProductDesign\Model\ResourceModel\Post\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">dalmate_productdesign_post</argument>
+            <argument name="resourceModel" xsi:type="string">dalmate\ProductDesign\Model\ResourceModel\Post</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="general_listing_data_source" xsi:type="string">
+                    dalmate\ProductDesign\Model\ResourceModel\Post\Grid\Collection
+                </item> 
+            </argument>
+        </arguments>
+    </type>
+</config>

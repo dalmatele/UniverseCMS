@@ -1,0 +1,9 @@
+- I read this tutorial: http://javascriptsolution.com/create-custom-module-in-magento-2-1/
+- how to create database: http://inchoo.net/magento-2/setup-scripts-magento-2/
+- magento database structure: http://www.venustheme.com/magento-2-database-structure/
+                            http://anna.voelkl.at/magento-ce-1-9-2-2-database-diagram/
+- Cumtomer table: customer_entity
+- How to create admin interface: https://www.ashsmith.io/magento2/module-from-scratch-part-5-adminhtml/
++ Detail about admin menu: http://www.venustheme.com/how-to-create-magento-2-admin-menu/
+- How to write log: http://magento.stackexchange.com/questions/92434/magento-2-replacement-for-magelog-method
+

@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <!--id phai bat dau bang chu in hoa-->
+        <!--la menu con cua menu content-->
+        <!--resource lien quan toi acl-->
+        <!--action la mot link se hoat dong khi duoc click-->
+        <!--ten module phai dung-->
+        <add id="Dalmate_ProductDesign::general_heading" title="Product Design" module="dalmate_ProductDesign"
+         resource="Dalmate_ProductDesign::general_heading"/>
+        <!--action - routes - controller - view/layout - view/ui_component-->
+        <add id="Dalmate_ProductDesign::general_setting" title="Settings" module="dalmate_ProductDesign"
+        parent="Dalmate_ProductDesign::general_heading" action="productdesign/general"
+             resource="Dalmate_ProductDesign::general_setting" /> 
+    </menu>
+</config>
