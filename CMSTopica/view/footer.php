@@ -3,7 +3,7 @@
         Copyright &copy; 2016 - Topica Edtech Group <sup>&reg;</sup>
     </div>
     <div>
-        Version 0.0.4
+        Version 0.1.0
     </div>
 </div>
 

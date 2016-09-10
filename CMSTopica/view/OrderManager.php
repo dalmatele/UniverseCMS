@@ -1,3 +1,16 @@
+<?php
+    require_once '../Include/config.php';
+    require_once '../Include/functions.php';
+    require_once '../models/Database.php';
+    sec_session_start();
+    $db = new Database();
+    $conn = $db->getConnection();
+    $isLogin = login_check($conn);
+    $db->dbClose();
+    if(!$isLogin){
+        header("Location: ../index.php");
+    }
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -10,18 +23,18 @@ and open the template in the editor.
         <title>Quản lý đơn hàng</title>
     </head>
 <!--    <link rel="stylesheet" type="text/css" href="../css/style.css?v=144226072016"/>-->
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=531329082016" />
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css?v=531329082016"/>
-    <link rel="stylesheet" type="text/css" href="../js/w2ui/w2ui.min.css?v=531329082016" />
-    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css?v=531329082016" />
-    <link rel="stylesheet" type="text/css" href="../js/jquery-contextmenu/jquery.contextMenu.min.css"/>
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=072309092016" />
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css?v=072309092016"/>
+    <link rel="stylesheet" type="text/css" href="../js/w2ui/w2ui.min.css?v=072309092016" />
+    <link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css?v=072309092016" />
+    <link rel="stylesheet" type="text/css" href="../js/jquery-contextmenu/jquery.contextMenu.min.css?v=072309092016"/>
     
-    <script type="text/javascript" src="../js/jquery/jquery.js?v=010926072016"></script>
-    <script type="text/javascript" src="../js/w2ui/w2ui.min.js?v=010926072016"></script>
-    <script type="text/javascript" src="../js/bootstrap.min.js?v=010926072016"></script>
-    <script type="text/javascript" src="../js/raphael/raphael.min.js"></script>
-    <script type="text/javascript" src="../js/flowchart/flowchart.js"></script>
-    <script type="text/javascript" src="../js/order.js?v=531329082016"></script>
+    <script type="text/javascript" src="../js/jquery/jquery.js?v=072309092016"></script>
+    <script type="text/javascript" src="../js/w2ui/w2ui.min.js?v=072309092016"></script>
+    <script type="text/javascript" src="../js/bootstrap.min.js?v=072309092016"></script>
+    <script type="text/javascript" src="../js/raphael/raphael.min.js?v=072309092016"></script>
+    <script type="text/javascript" src="../js/flowchart/flowchart.js?v=072309092016"></script>
+    <script type="text/javascript" src="../js/order.js?v=242309092016"></script>
     
     <script type="text/javascript">
         $(document).ready(function(){

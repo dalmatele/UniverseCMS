@@ -65,8 +65,22 @@ function sendRequest(type, url, request, dataType, successFunction){
             $(".waiting_modal").hide("slow");
         },
         success: function(data, textStatus, jqXHR){
+            $(".waiting_modal").hide("slow");
              var records = data.res;
             successFunction(records, textStatus, jqXHR);
         }
     });
+};
+
+/**
+ * http://stackoverflow.com/questions/21014476/javascript-convert-unicode-string-to-javascript-escape
+ * @param {type} uni_str
+ * @returns {String}
+ */
+function unicodeToAsscii(uni_str){
+    var result = "";
+    for(var i = 0; i < uni_str.length; i++){
+        result += "\\u" + ("000" + uni_str[i].charCodeAt(0).toString(16)).substr(-4);
+    }
+    return result;
 };

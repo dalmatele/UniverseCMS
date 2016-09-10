@@ -14,7 +14,7 @@ $value = $config->getConfigValueByName("tracking_code");
 //$value2 = $config->getConfigValueByName("tracking_pod");
 if(strcmp($value, "-1") != 0){
     $sharepointConnection = new SharepointRequest("minhnv@edumallinternational.onmicrosoft.com",
-        "qsysopr@16",
+        "qsysopr12!@",
         "https://edumallinternational.sharepoint.com/"
         );
     $sharepointConnection->setListItem("CODs");

@@ -1,23 +1,31 @@
+<?php
+    require_once '../Include/config.php';
+    require_once '../Include/functions.php';
+    require_once '../models/Database.php';
+    sec_session_start();
+    $db = new Database();
+    $conn = $db->getConnection();
+    $isLogin = login_check($conn);
+    $db->dbClose();
+    if(!$isLogin){
+        header("Location: ../index.php");
+    }
+?>
 <!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
 <html>
     <head>
         <meta charset="UTF-8">
         <title>Gửi Email Marketing</title>
     </head>
     
-    <link rel="stylesheet" type="text/css" href="../js/w2ui/w2ui.min.css?v=531329082016" />
+    <link rel="stylesheet" type="text/css" href="../js/w2ui/w2ui.min.css?v=072309092016" />
     
-    <script type="text/javascript" src="../js/jquery/jquery.js?v=461601092016"></script>
-    <script type="text/javascript" src="../js/w2ui/w2ui.min.js?v=010926072016"></script>
-    <script type="text/javascript" src="../js/ckeditor/ckeditor.js"></script>
-    <script type="text/javascript" src="../js/blueimp-file-upload/js/vendor/jquery.ui.widget.min.js?v=010926072016"></script>
-    <script type="text/javascript" src="../js/blueimp-file-upload/js/jquery.fileupload.js?v=010926072016"></script>
-    <script type="text/javascript" src="../js/send_email.js"></script>
+    <script type="text/javascript" src="../js/jquery/jquery.js?v=072309092016"></script>
+    <script type="text/javascript" src="../js/w2ui/w2ui.min.js?v=072309092016"></script>
+    <script type="text/javascript" src="../js/ckeditor/ckeditor.js?v=472010092016"></script>
+    <script type="text/javascript" src="../js/blueimp-file-upload/js/vendor/jquery.ui.widget.min.js?v=072309092016"></script>
+    <script type="text/javascript" src="../js/blueimp-file-upload/js/jquery.fileupload.js?v=072309092016"></script>
+    <script type="text/javascript" src="../js/send_email.js?v=472010092016"></script>
      <script type="text/javascript">
         $(document).ready(function(){
            init();
@@ -100,6 +108,6 @@ and open the template in the editor.
                 </div>
             </div>
           </div>
-        
+        <div class="waiting_modal"></div>
     </body>
 </html>

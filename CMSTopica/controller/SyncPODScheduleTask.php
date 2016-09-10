@@ -11,7 +11,7 @@ $config = new ConfigDB();
 $value = $config->getConfigValueByName("tracking_pod");
 if(strcmp($value, "-1") != 0){
     $sharepointConnection = new SharepointRequest("minhnv@edumallinternational.onmicrosoft.com",
-        "qsysopr@16",
+        "qsysopr12!@",
         "https://edumallinternational.sharepoint.com/"
         );
     $sharepointConnection->setBeginId($value);

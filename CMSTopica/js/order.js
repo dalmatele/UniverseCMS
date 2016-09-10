@@ -18,9 +18,6 @@ Order.prototype.searchParam = {};
  */
 Order.prototype.init = function(){
     var self = this;
-    $("#order_link").attr("href", "OrderManager.php");
-    $("#home_link").attr("href", this.service + "/index.php");
-    $("#export_link").attr("href", this.service + "/view/ExportData.php");
     var statuslst = [
         {
             text: 'Thành công',

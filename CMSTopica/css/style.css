@@ -9,12 +9,12 @@
   box-sizing: border-box;
 }
 
-ul:after, header:after, #main:after {
+header ul:after, header:after, #main:after {
   clear: both;
   content: "";
   display: table;
 }
-ul:before, header:before, #main:before {
+header ul:before, header:before, #main:before {
   content: "";
   display: table;
 }
@@ -45,6 +45,7 @@ header {
   -moz-perspective: 1555px;
   perspective: 1555px;
   z-index: 999999;
+  position: relative;
 }
 
 #main {
@@ -429,7 +430,8 @@ nav.dc .submenu:hover {
 
 /*==end new menu==*/
 
-#order_table, #order_detail_diagram, #top_monthly_report,#main_monthly_report{
+/*for popup's content*/
+#order_table, #order_detail_diagram, #top_monthly_report,#main_monthly_report, #popup_content{
     width: 100%;
     height: 500px;
 }
@@ -448,7 +450,8 @@ nav.dc .submenu:hover {
                 no-repeat;
 }
 
-#popup_orderStatus,#popup_monthly_report{
+/*for popup layout*/
+#popup_orderStatus,#popup_monthly_report, #popup_one_request{
     width: 100%;
     height: 100%;
 }
@@ -460,4 +463,8 @@ nav.dc .submenu:hover {
 
 #layout_layout_monthly_report_panel_top .w2ui-panel-content{
     overflow:hidden !important;
+}
+
+.error{
+    color: red;
 }

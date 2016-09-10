@@ -1,3 +1,16 @@
+<?php
+    require_once '../Include/config.php';
+    require_once '../Include/functions.php';
+    require_once '../models/Database.php';
+    sec_session_start();
+    $db = new Database();
+    $conn = $db->getConnection();
+    $isLogin = login_check($conn);
+    $db->dbClose();
+    if(!$isLogin){
+        header("Location: ../index.php");
+    }
+?>
 <!DOCTYPE html>
 <!--
 To change this license header, choose License Headers in Project Properties.
@@ -8,15 +21,15 @@ and open the template in the editor.
     <head>
         <meta charset="UTF-8">
         <title>Xuất báo cáo</title>
-        <link rel="stylesheet" type="text/css" href="../js/w2ui/w2ui.min.css?v=461601092016" />
-        <link rel="stylesheet" type="text/css" href="../js/jqPlot/jquery.jqplot.min.css?v=461601092016" />
+        <link rel="stylesheet" type="text/css" href="../js/w2ui/w2ui.min.css?v=072309092016" />
+        <link rel="stylesheet" type="text/css" href="../js/jqPlot/jquery.jqplot.min.css?v=072309092016" />
         
-        <script type="text/javascript" src="../js/jquery/jquery.js?v=461601092016"></script>
-        <script type="text/javascript" src="../js/w2ui/w2ui.min.js?v=461601092016"></script>
-        <script type="text/javascript" src="../js/bootstrap.min.js?v=461601092016"></script>
-        <script type="text/javascript" src="../js/jqPlot/jquery.jqplot.min.js"></script>
-        <script type="text/javascript" src="../js/jqPlot/plugins/jqplot.pieRenderer.min.js"></script>
-        <script type="text/javascript" src="../js/export.js?v=461601092016"></script>
+        <script type="text/javascript" src="../js/jquery/jquery.js?v=072309092016"></script>
+        <script type="text/javascript" src="../js/w2ui/w2ui.min.js?v=072309092016"></script>
+        <script type="text/javascript" src="../js/bootstrap.min.js?v=072309092016"></script>
+        <script type="text/javascript" src="../js/jqPlot/jquery.jqplot.min.js?v=072309092016"></script>
+        <script type="text/javascript" src="../js/jqPlot/plugins/jqplot.pieRenderer.min.js?v=072309092016"></script>
+        <script type="text/javascript" src="../js/export.js?v=072309092016"></script>
     </head>
     <script type="text/javascript">
         $(document).ready(function(){

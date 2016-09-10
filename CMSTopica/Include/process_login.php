@@ -11,7 +11,7 @@ if(isset($_POST["email"], $_POST["p"])){
     $password = $_POST["p"];
     if(login($email, $password) == true){
         //session has values
-        header("Location: ../view/index.php");
+        header("Location: ../view/home.php");
         session_write_close();
         exit;
     }else{

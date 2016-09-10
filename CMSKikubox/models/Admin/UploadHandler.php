@@ -1220,7 +1220,12 @@ class UploadHandler {
             .implode(', ', $this->options['access_control_allow_headers']));
     }
 
-    
+    /**
+     * Return response
+     * @param type $content
+     * @param type $print_response
+     * @return type
+     */
     public function generate_response($content, $print_response = true) {
         $this->response = $content;
         if ($print_response) {

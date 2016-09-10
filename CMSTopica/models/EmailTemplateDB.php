@@ -1,8 +1,8 @@
 <?php
 
+namespace models;
 require_once '../models/Database.php';
 
-namespace models;
 
 /**
  * Description of EmailTemplateDB
@@ -10,6 +10,7 @@ namespace models;
  * @author duc
  */
 class EmailTemplateDB extends \Database{
+    
     public function insert($subject, $email_content){
         $query = $this->connection->prepare("INSERT INTO `email_templates` (id,subject, email_content) VALUES(NULL,?,?)");
         if(!$query){

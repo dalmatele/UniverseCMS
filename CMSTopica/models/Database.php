@@ -41,6 +41,16 @@ class Database {
         $this->connection->close();
     }
     
+    /**
+     * Get created at value for tables
+     * @return type
+     */
+    protected function getCreatedDate(){
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $now = new \DateTime();
+        return $now->format("Y-m-d H:i:s");
+    }
+    
     //http://code.tutsplus.com/tutorials/the-problem-with-phps-prepared-statements--net-13661
     /**
      * 

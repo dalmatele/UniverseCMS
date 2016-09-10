@@ -2,6 +2,7 @@
 
 require_once './functions.php';
 
+sec_session_start();
 $_SESSION = array();
 
 $params = session_get_cookie_params();

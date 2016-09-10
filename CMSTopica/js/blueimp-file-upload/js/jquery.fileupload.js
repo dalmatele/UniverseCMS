@@ -319,6 +319,7 @@
 
         _getFormData: function (options) {
             var formData;
+            
             if ($.type(options.formData) === 'function') {
                 return options.formData(options.form);
             }
@@ -326,8 +327,10 @@
                 return options.formData;
             }
             if ($.type(options.formData) === 'object') {
+                
                 formData = [];
                 $.each(options.formData, function (name, value) {
+                    
                     formData.push({name: name, value: value});
                 });
                 return formData;

@@ -37,7 +37,7 @@ class SendEmailScheduleDB extends \Database{
     }
     
     public function search($send_from, $index, $pageSize){
-        $query = $this->connection->prepare("SELECT id,send_from FROM `send_mail_schedule` "
+        $query = $this->connection->prepare("SELECT id,send_from,fullname FROM `send_mail_schedule` "
                 . "WHERE "
                 . "send_from like IFNULL(?,send_from) "
                 . "LIMIT ?, ?");

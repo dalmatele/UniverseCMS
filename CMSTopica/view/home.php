@@ -1,6 +1,15 @@
 <?php
+    require_once '../Include/config.php';
     require_once '../Include/functions.php';
+    require_once '../models/Database.php';
     sec_session_start();
+    $db = new Database();
+    $conn = $db->getConnection();
+    $isLogin = login_check($conn);
+    $db->dbClose();
+    if(!$isLogin){
+        header("Location: ../index.php");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -9,9 +18,9 @@
         <meta charset="UTF-8">
         <title>Topical Edumall CMS</title>
     </head>
-    <script type="text/javascript" src="../js/jquery/jquery.js?v=461601092016"></script>
-    <script type="text/javascript" src="../js/blueimp-file-upload/js/vendor/jquery.ui.widget.min.js?v=010926072016"></script>
-    <script type="text/javascript" src="../js/blueimp-file-upload/js/jquery.fileupload.js?v=010926072016"></script>
+    <script type="text/javascript" src="../js/jquery/jquery.js?v=072309092016"></script>
+    <script type="text/javascript" src="../js/blueimp-file-upload/js/vendor/jquery.ui.widget.min.js?v=072309092016"></script>
+    <script type="text/javascript" src="../js/blueimp-file-upload/js/jquery.fileupload.js?v=072309092016"></script>
     
 <!--    <link rel="stylesheet" type="text/css" href="css/style.css?v=010926072016"/>-->
     <script type="text/javascript">

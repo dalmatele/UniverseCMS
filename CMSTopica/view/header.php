@@ -1,9 +1,9 @@
-<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=461601092016" />
-<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css?v=461601092016"/>
-<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css?v=461601092016" />
-<link rel="stylesheet" type="text/css" href="../css/style.css?v=531001092016"/> <!--.-->
+<link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css?v=072309092016" />
+<link rel="stylesheet" type="text/css" href="../css/bootstrap-theme.min.css?v=072309092016"/>
+<link rel="stylesheet" type="text/css" href="../css/font-awesome.min.css?v=072309092016" />
+<link rel="stylesheet" type="text/css" href="../css/style.css?v=242309092016"/> <!--.-->
 
-<script type="text/javascript" src="../js/main.js?v=531001092016"></script>
+<script type="text/javascript" src="../js/main.js?v=072309092016"></script>
 
 <script>
     $(document).ready(function(){
@@ -54,7 +54,7 @@
            <a href="#"><i class="fa fa-briefcase"></i> Tiện ích <i class="fa fa-caret-down"></i></a>
             <ul class="submenu">
                 <li><a href="SendMarketingMail.php">Gửi thư tự động</a></li>
-                <li><a href="#0">Aliquam</a></li>
+                <li><a href="RequestManager.php">Dịch vụ hỗ trợ</a></li>
                 <li><a href="#0">Vestibulum</a></li>
                 <li><a href="#0">Ipsum</a></li>
                 <li><a href="#0">Consectetur</a></li>

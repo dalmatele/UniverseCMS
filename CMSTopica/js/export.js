@@ -1,6 +1,6 @@
 function Export(){
-    this.service = "/CMSTopica";
-//    this.service = getService();
+//    this.service = "/CMSTopica";
+    this.service = getService();
     this.init();
 };
 

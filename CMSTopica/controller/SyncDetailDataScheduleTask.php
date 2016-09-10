@@ -12,7 +12,7 @@ require_once '../models/InstructorDB.php';
 require_once '../models/CourseDB.php';
 
 $sharepointConnection = new SharepointRequest("minhnv@edumallinternational.onmicrosoft.com",
-        "qsysopr@16",
+        "qsysopr12!@",
         "https://edumallinternational.sharepoint.com/"
 );
 

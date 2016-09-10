@@ -22,7 +22,7 @@ function regformhash(form, uid, email, password, conf) {
           password.value == ''  || 
           conf.value == '') {
  
-        alert('You must provide all the requested details. Please try again');
+        alert('Bạn phải nhập đầy đủ thông tin đăng ký. Vui lòng thử lại.');
         return false;
     }
  
@@ -30,7 +30,7 @@ function regformhash(form, uid, email, password, conf) {
  
     re = /^\w+$/; 
     if(!re.test(form.username.value)) { 
-        alert("Username must contain only letters, numbers and underscores. Please try again"); 
+        alert("Tên tài khoản chỉ được chứa ký tự, chữ số và dấu gạch dưới. Vui lòng thử lại."); 
         form.username.focus();
         return false; 
     }
@@ -39,7 +39,7 @@ function regformhash(form, uid, email, password, conf) {
     // The check is duplicated below, but this is included to give more
     // specific guidance to the user
     if (password.value.length < 6) {
-        alert('Passwords must be at least 6 characters long.  Please try again');
+        alert('Mật khẩu phải dài tối thiểu 6 ký tự. Vui lòng thử lại.');
         form.password.focus();
         return false;
     }
@@ -49,13 +49,13 @@ function regformhash(form, uid, email, password, conf) {
  
     var re = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/; 
     if (!re.test(password.value)) {
-        alert('Passwords must contain at least one number, one lowercase and one uppercase letter.  Please try again');
+        alert('Mật khẩu phải chứa ít nhất một chữ số, một ký tự in thường và một ký tự in hoa. Vui lòng thử lại.');
         return false;
     }
  
     // Check password and confirmation are the same
     if (password.value != conf.value) {
-        alert('Your password and confirmation do not match. Please try again');
+        alert('Mật khẩu và mật khẩu xác nhận lại không khớp. Vui lòng thử lại.');
         form.password.focus();
         return false;
     }

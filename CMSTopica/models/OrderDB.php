@@ -151,8 +151,7 @@ class OrderDB extends Database{
         $query->bind_param("ss", $f_status_date, $t_status_date);
         $query->execute();
         
-        $account_reports = array();
-        $account_reports = $this->generateResult($account_reports, $query);
+        $account_reports[] = $this->generateResult($query);
         return $account_reports;
     }
     
