@@ -44,7 +44,7 @@ header {
   -webkit-perspective: 1555px;
   -moz-perspective: 1555px;
   perspective: 1555px;
-  z-index: 999999;
+  z-index: 999;
   position: relative;
 }
 
@@ -467,4 +467,7 @@ nav.dc .submenu:hover {
 
 .error{
     color: red;
+}
+.user-autocomplete{
+    z-index:9999;
 }

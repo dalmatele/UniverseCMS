@@ -1,7 +1,7 @@
 <?php
 
-require_once '../models/Database.php';
-require_once '../models/OrderPod.php';
+require_once __DIR__ .'/../models/Database.php';
+require_once __DIR__ .'/../models/OrderPod.php';
 /**
  * Description of OrderPodDB
  *

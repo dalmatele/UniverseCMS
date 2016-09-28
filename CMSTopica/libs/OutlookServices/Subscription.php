@@ -3,7 +3,7 @@
 
 namespace Office365\PHP\Client\OutlookServices;
 
-require_once '../libs/Runtime/ClientObject.php';
+require_once __DIR__ .'/../Runtime/ClientObject.php';
 
 use Office365\PHP\Client\Runtime\ClientObject;
 

@@ -3,9 +3,9 @@
 //https://books.google.co.th/books?id=rg9Si_yksiAC&pg=PT187&lpg=PT187&dq=XML_SERIALIZER_OPTION_SCALAR_AS_ATTRIBUTES&source=bl&ots=vPVTZy4Dp2&sig=YTMGHwZsQqBSYxsu1pZZKAVVCkI&hl=en&sa=X&ved=0ahUKEwjt1aDLpt7OAhXGp48KHezKDgcQ6AEIPzAG#v=onepage&q=XML_SERIALIZER_OPTION_SCALAR_AS_ATTRIBUTES&f=false
 //http://paulryan.com.au/2014/spo-remote-authentication-rest/
 //https://macfoo.wordpress.com/2012/06/23/how-to-log-into-office365-or-sharepoint-online-using-php/
-require_once '../libs/XML/Serializer.php';
-require_once '../libs/SharePoint/ClientContext.php';
-require_once '../libs/Runtime/Auth/AuthenticationContext.php';
+require_once __DIR__ .'/../libs/XML/Serializer.php';
+require_once __DIR__ .'/../libs/SharePoint/ClientContext.php';
+require_once __DIR__ .'/../libs/Runtime/Auth/AuthenticationContext.php';
 
 use Office365\PHP\Client\Runtime\Auth\AuthenticationContext;
 use Office365\PHP\Client\SharePoint\ClientContext;

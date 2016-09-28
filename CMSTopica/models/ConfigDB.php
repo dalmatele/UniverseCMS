@@ -1,6 +1,6 @@
 <?php
 
-require_once '../models/Database.php';
+require_once __DIR__ .'/../models/Database.php';
 
 /**
  * Description of ConfigDB

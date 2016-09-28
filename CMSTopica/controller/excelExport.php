@@ -11,7 +11,7 @@ require_once './Utilities.php';
  * Chen worksheet vào excel object
  * Ghi excel object
  */
-
+date_default_timezone_set("Asia/Ho_Chi_Minh");
 $method = $_SERVER["REQUEST_METHOD"];
 switch ($method){
     case "POST":

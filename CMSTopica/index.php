@@ -32,7 +32,6 @@ if($isLogin){
             $(document).ready(function(){
                $(".input-field").keypress(function(e){
                    if(e.which === 13) {
-                       console.log("test");
                         $("#login-btn").trigger("click");
                     }
                });
@@ -48,6 +47,11 @@ if($isLogin){
                     <div class="row">
                         <div class="col-md-4">
                             <?php echo '<p class="error">Error Logging In!</p>'; ?>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <p class="error">Wrong username or password or your account is not actived!</p>
                         </div>
                     </div>
                     <?php } ?>

@@ -1,7 +1,7 @@
 <?php
 
 namespace models;
-require_once '../models/Database.php';
+require_once __DIR__ .'/../models/Database.php';
 
 
 /**
@@ -39,7 +39,7 @@ class SendEmailTaskLogDB extends \Database{
     }
     
     public function getEmailToSend($time){
-        $query = $this->connection->prepare("SELECT setl.id as id, send_to, send_from , email_content, subject, send_password, fullname "
+        $query = $this->connection->prepare("SELECT setl.id as id, send_to, send_from , email_content, subject, send_password, fullname, et.id as template_id "
                                             ."FROM `send_email_task_log` setl "
                                             ."INNER JOIN `send_mail_schedule` ses ON setl.from_id = ses.id "
                                             ."INNER JOIN `email_templates` et ON setl.email_id = et.id "

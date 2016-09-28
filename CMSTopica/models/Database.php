@@ -1,16 +1,13 @@
 <?php
-
+require_once __DIR__ .'/../libs/log4php/Logger.php';
+require_once __DIR__ .'/../Include/functions.php';
 /**
  * Description of Database
  *
  * @author duc
  */
 class Database {
-//    public $connection;
-//    private $db_host;
-//    private $db_username;
-//    private $db_password;
-//    private $db_dbname;
+    
     
     Function __construct() {
 //        $this->db_username = $username;
@@ -28,6 +25,7 @@ class Database {
 //        $this->connection = new mysqli($this->db_host, $this->db_username, $this->db_password, $this->db_dbname);
         $this->connection = new mysqli(DBHOST, DBUSER, DBPASSWORD, DATABASE);
         if($this->connection->connect_errno){
+            errorLogger("Could not connect to database server", "error");
             die("Could not connect to database server");
         }
         $this->connection->set_charset("utf8");
@@ -62,11 +60,13 @@ class Database {
         $dataArray = array();
         $meta = $query->result_metadata();
         while ($field = $meta->fetch_field()){
+            
             $params[] = &$row[$field->name];
         } 
         call_user_func_array(array($query, 'bind_result'), $params);
         while ($query->fetch()) {
             foreach($row as $key => $val){
+                error_log($val);
                 $c[$key] = $val;
             }
             $dataArray[] = $c;

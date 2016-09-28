@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--https://logging.apache.org/log4php/docs/layouts/pattern.html-->
+<configuration xmlns="http://logging.apache.org/log4php/">
+    <!--se luu theo ngay-->
+    <appender name="default" class="LoggerAppenderDailyFile">
+        <layout class="LoggerLayoutPattern">
+            <!--noi dung ghi ra theo mau nao-->
+            <param name="conversionPattern" value="%date %logger %-5level %msg%n" />
+        </layout>
+        <!--ghi ra file nao-->
+        <param name="file" value="../logs/email-%s.log" />
+        <param name="datePattern" value="Y-m-d" />
+        <!--noi tiep vao file hay khong-->
+        <param name="append" value="true" />
+    </appender>
+    
+    <appender name="error_log" class="LoggerAppenderDailyFile">
+        <layout class="LoggerLayoutPattern">
+            <!--noi dung ghi ra theo mau nao-->
+            <param name="conversionPattern" value="%date %logger %-5level %msg%n" />
+        </layout>
+        <!--ghi ra file nao-->
+        <param name="file" value="../logs/error-%s.log" />
+        <param name="datePattern" value="Y-m-d" />
+        <!--noi tiep vao file hay khong-->
+        <param name="append" value="true" />
+    </appender>
+    <logger name="email" additivity="false">
+        <level value="info" />
+        <appender_ref ref="default" />
+    </logger>
+    <logger name="error" additivity="false">
+        <level value="info" />
+        <appender_ref ref="error_log" />
+    </logger>
+    <root>
+        <level value="WARN" />
+        <appender_ref ref="default" />
+    </root>
+</configuration>

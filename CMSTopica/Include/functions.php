@@ -1,5 +1,7 @@
 <?php
 
+require_once __DIR__ .'/../libs/log4php/Logger.php';
+require_once __DIR__ .'/../libs/PHPMailer/PHPMailerAutoload.php';
 /* 
  * To control all login actions
  * @link: http://www.wikihow.com/Create-a-Secure-Login-Script-in-PHP-and-MySQL
@@ -24,13 +26,16 @@ function sec_session_start(){
 function login($email, $password){
     $dbconnection = new Database();
     $mysqli = $dbconnection->getConnection();
-    if($stmt = $mysqli->prepare("Select id, username, password From `members` Where email = ? Limit 1")){
+    if($stmt = $mysqli->prepare("Select id, username, password, active_code From `members` Where email = ? Limit 1")){
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $stmt->store_result();
-        $stmt->bind_result($user_id, $username, $db_password);
+        $stmt->bind_result($user_id, $username, $db_password, $active_code);
         $stmt->fetch();
         if($stmt->num_rows == 1){
+            if(!empty($active_code)){
+                return false;
+            }
             if(checkbrute($user_id, $mysqli) == true){
                 return false;
             }else{
@@ -72,6 +77,14 @@ function checkbrute($user_id, $mysqli){
             return false;
         }
     }
+}
+
+function get_username(){
+    return  $_SESSION["username"];
+}
+
+function get_userid(){
+    return  $_SESSION["user_id"];
 }
 
 function login_check($mysqli){
@@ -128,4 +141,85 @@ function esc_url($url){
     }else{
         return $url;
     }
+}
+
+function emailLogger($message, $level){
+    Logger::configure(__DIR__.'/../Include/log4Email.php');
+    $logger = Logger::getLogger("email");
+    if(strcmp($level, "info") == 0){
+        $logger->info($message);
+    }else if(strcmp($level, "error") == 0){
+        $logger->error($message);
+    }else if(strcmp($level, "debug") == 0){
+        $logger->debug($message);
+    }else{
+        $logger->fatal($message);
+    }
+};
+
+function syncLogger($message, $level){
+    Logger::configure(__DIR__.'/../Include/log4Sync.php');
+    $logger = Logger::getLogger("sync");
+    if(strcmp($level, "info") == 0){
+        $logger->info($message);
+    }else if(strcmp($level, "error") == 0){
+        $logger->error($message);
+    }else if(strcmp($level, "debug") == 0){
+        $logger->debug($message);
+    }else{
+        $logger->fatal($message);
+    }
+}
+
+function errorLogger($message, $level){
+    Logger::configure(__DIR__.'/../Include/log4Error.php');
+    $logger = Logger::getLogger("error");
+    if(strcmp($level, "info") == 0){
+        $logger->info($message);
+    }else if(strcmp($level, "error") == 0){
+        $logger->error($message);
+    }else if(strcmp($level, "debug") == 0){
+        $logger->debug($message);
+    }else{
+        $logger->fatal($message);
+    }
+}
+
+function sendEmail($content, $receivers){
+    $mail = new PHPMailer();
+    $mail->isSMTP();
+    $mail->CharSet = 'UTF-8';
+    $mail->Host = "128.199.227.1";
+    $mail->SMTPAuth = true;
+//    $mail->SMTPSecure = 'tls';
+    $mail->SMTPSecure = 'tls';
+    $mail->Port = 587;
+    $mail->isHTML(true);
+    $mail->SMTPKeepAlive = true; // prevent the SMTP session from being closed after each message
+    $email_log = "";
+    //https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting
+    //disable certifcate check
+    $mail->SMTPOptions = array(
+        'ssl' => array(
+            'verify_peer' => false,
+            'verify_peer_name' => false,
+            'allow_self_signed' => true
+        )
+    );
+    $mail->Username = EMAIL_USER;
+    $mail->Password = EMAIL_PASSWORD;
+    $mail->setFrom(EMAIL);
+    $mail->addCustomHeader("Precedence: bulk");
+    $mail->addCustomHeader("List-Unsubscribe", "<unsubscribe@edumall.co.th>");
+    $mail->addAddress($receivers); 
+    $mail->Subject = "Your activate account link";
+    $mail->Body    = $content;
+    if(!$mail->send()) {
+//        emailLogger("Message has been sent:".EMAIL." --> ".$receivers.$mail->ErrorInfo, "error");
+    } else {
+//                $email_log = 'Message has been sent';
+//        emailLogger("Message has been sent:".EMAIL." --> ".$receivers, "info");
+
+    }
+    $mail->SmtpClose();
 }

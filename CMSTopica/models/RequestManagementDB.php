@@ -19,12 +19,13 @@ class RequestManagementDB extends \Database{
                 ." (id,petitioner, worker, request_type, request_content, request_important, request_at) "
                 ."VALUES(NULL,?,?,?,?,?,?)");
         if(!$query){
+            errorLogger(mysqli_error($this->connection), "error");
             die("Error prepare query. ".mysqli_error($this->connection));
         }
-        $query->bind_param("ssisis",$petitioner, $worker, $request_type, $request_content, $request_important, $this->getCreatedDate());
+        $created_date = $this->getCreatedDate();
+        $query->bind_param("ssisis",$petitioner, $worker, $request_type, $request_content, $request_important, $created_date);
         $result = $query->execute();
         if(!$result){
-            error_log(mysqli_error($this->connection), 0);
             return -1;
         }else{
             return $query->insert_id;
@@ -40,6 +41,7 @@ class RequestManagementDB extends \Database{
                 . "INNER JOIN `request_status` s on t.request_status=s.id "
                 . "WHERE t.id = ?");
         if(!$query){
+            errorLogger(mysqli_error($this->connection), "error");
             die("Error prepare query. ".mysqli_error($this->connection));
         }
         $query->bind_param("i", $id);
@@ -50,13 +52,13 @@ class RequestManagementDB extends \Database{
     
     public function search($worker, $request_type, $request_important, $request_status,
             $f_request_at, $t_request_at, $index, $pageSize){
-        error_log($this->TABLE);
-        $query = $this->connection->prepare("SELECT t.id, petitioner,worker, r.request_type as type, "
+        $query = $this->connection->prepare("SELECT t.id, t.request_content, t.request_at, m.username as petitioner,worker, r.request_type as type, "
                 . "l.request_level as level, s.request_status as status "
                 . "FROM ".$this->TABLE." as t "
                 . "INNER JOIN `request_type` r on t.request_type=r.id "
                 . "INNER JOIN `request_level` l on t.request_important=l.id "
                 . "INNER JOIN `request_status` s on t.request_status=s.id "
+                . "INNER JOIN `members` m on t.petitioner = m.id "
                 . "WHERE "
                 . "worker like IFNULL(?,worker) "
                 . "AND t.request_type = IFNULL(?,t.request_type) "
@@ -66,7 +68,7 @@ class RequestManagementDB extends \Database{
                 . "AND t.request_at <= IFNULL(?,t.request_at)"
                 . "LIMIT ?, ?");
         if(!$query){
-            error_log(mysqli_error($this->connection));
+            errorLogger(mysqli_error($this->connection), "error");
             die("Error prepare query. ".mysqli_error($this->connection));
         }
         $worker = $worker != NULL ? "%".$worker."%" : NULL;

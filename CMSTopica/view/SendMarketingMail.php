@@ -25,7 +25,8 @@
     <script type="text/javascript" src="../js/ckeditor/ckeditor.js?v=472010092016"></script>
     <script type="text/javascript" src="../js/blueimp-file-upload/js/vendor/jquery.ui.widget.min.js?v=072309092016"></script>
     <script type="text/javascript" src="../js/blueimp-file-upload/js/jquery.fileupload.js?v=072309092016"></script>
-    <script type="text/javascript" src="../js/send_email.js?v=472010092016"></script>
+    <script type="text/javascript" src="../js/noty/packaged/jquery.noty.packaged.min.js?v=231511092016"></script>
+    <script type="text/javascript" src="../js/send_email.js?v=301113092016"></script>
      <script type="text/javascript">
         $(document).ready(function(){
            init();
@@ -45,10 +46,7 @@
                     </div>
                     <div class="col-md-4">
                         <input type="text" id="from_address" style="width: 100%;"/>
-                    </div>
-<!--                    <div class="col-md-2">
-                        <span class="label label-primary">Mật khẩu hộp thư:</span>
-                    </div>
+                    </div><!--
                     <div class="col-md-3">
                         <input  id="from_address_password" type="password" />
                     </div>-->
@@ -57,7 +55,7 @@
                         <div class="col-md-2">
                             <span class="label label-primary">Gửi tới:</span>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-5">
                             <input id="address_file_upload" type="file" name="file" data-url="" />
                         </div>
                         <div class="col-md-5">
@@ -78,8 +76,10 @@
                           <div class="input-group margin-bottom-sm">
                             <span class="input-group-addon"><i class="fa fa-calendar-o fa-fw"></i></span>
                             <input class="form-control" type="us-date" id="date-to-send">
-                          </div>
-                          
+                          </div>  
+                      </div>
+                      <div class="col-md-6">
+                          <span class="error" style="font-size: 10px;">(*)Lưu ý: Nếu không chọn giờ thì giờ sẽ là giờ hiện tại, nếu không chọn ngày thì ngày sẽ là ngày hiện tại.</span>
                       </div>
                   </div>
                     <div class="row" style="margin-top: 5px;">

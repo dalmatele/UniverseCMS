@@ -1,14 +1,17 @@
 <?php
 
-require_once "../Include/config.php";
-require_once '../models/ConfigDB.php';
-require_once '../models/OrderPod.php';
-require_once '../models/OrderPodDB.php';
-require_once './SharepointRequest.php';
-require_once './Utilities.php';
+require_once __DIR__ ."/../Include/config.php";
+require_once __DIR__ .'/../models/ConfigDB.php';
+require_once __DIR__ .'/../models/OrderPod.php';
+require_once __DIR__ .'/../models/OrderPodDB.php';
+require_once __DIR__ .'/./SharepointRequest.php';
+require_once __DIR__ .'/./Utilities.php';
+require_once __DIR__ .'/../Include/functions.php';
+
 
 $config = new ConfigDB();
 $value = $config->getConfigValueByName("tracking_pod");
+syncLogger("Begin sync POD data.", "info");
 if(strcmp($value, "-1") != 0){
     $sharepointConnection = new SharepointRequest("minhnv@edumallinternational.onmicrosoft.com",
         "qsysopr12!@",
@@ -63,6 +66,7 @@ if(strcmp($value, "-1") != 0){
     }
     $podb->dbClose();
     $value = intval($value);
+    syncLogger("Sync POD data: ".$value." items.", "info");
     $value = $value + $count;
     $config->updateConfigValueByName("tracking_pod", $value);
     $config->dbClose();

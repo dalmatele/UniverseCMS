@@ -1,7 +1,7 @@
 <?php
 //http://stackoverflow.com/questions/2418473/difference-between-require-include-and-include-once
-require_once '../models/Order.php';
-require_once '../models/Database.php';
+require_once __DIR__ .'/../models/Order.php';
+require_once __DIR__ .'/../models/Database.php';
 
 use models\AccountReport;
 use models\Order;

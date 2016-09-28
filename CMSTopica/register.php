@@ -101,6 +101,18 @@ include_once './Include/functions.php';
                             </div>
                         </form>
                     </div>
+                    <?php if($success): ?>
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-md-12" style="margin-left:15px">
+                            An active code has sent to your register email! Please open and follow the instruction in that email!
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top:10px;">
+                        <div class="col-md-12" style="margin-left:15px">
+                            <a href="controller/ResendActiveEmail.php?email=<?php echo $email ?>&username=<?php echo $username ?>">Click here</a> if not see active account email!
+                        </div>
+                    </div>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>

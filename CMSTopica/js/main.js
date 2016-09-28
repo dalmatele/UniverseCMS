@@ -84,3 +84,14 @@ function unicodeToAsscii(uni_str){
     }
     return result;
 };
+
+function getNowDateTimeStr(){
+    var now = new Date();
+//    var hour = now.getHours() - (now.getHours() >= 12 ? 12 : 0);
+    return [[AddZero(now.getDate()), AddZero(now.getMonth() + 1), now.getFullYear()].join("/"), [AddZero(now.getHours()), AddZero(now.getMinutes())].join(":")].join(" ");
+}
+
+//Pad given value to the left with "0"
+function AddZero(num) {
+    return (num >= 0 && num < 10) ? "0" + num : num + "";
+}
